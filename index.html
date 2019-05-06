@@ -64,11 +64,77 @@
           url: query,
         }).done(function(data) {
           console.log(data);
-       // Code from the next step will go here
+      map.getSource('tilequery').setData(data);
         })
-    });
-      
-          });
+      });
+      map.addSource('tilequery', {
+        type: "geojson",
+        data: {
+          "type": "FeatureCollection",
+          "features": []
+        }
+      });
+      map.addLayer({
+        id: "tilequery-points",
+        type: "circle",
+        source: "tilequery",
+        paint: {
+          "circle-stroke-color": "white",
+          "circle-stroke-width": {
+            stops: [
+              [0, 0.1],
+              [18, 3]
+            ],
+            base: 5
+          },
+          "circle-radius": {
+            stops: [
+              [12, 5],
+              [22, 180]
+            ],
+            base: 5
+          },
+          "circle-color": [
+            'match',
+            ['get', 'EVENT_TYPE'],
+            'Show', '#FF8C00',
+            'Panel Discussion', '#FF8C00',
+            'Health Fair', '#FF8C00',
+            'Recognitions', '#9ACD32',
+            'Training', '#008000',
+            'Care Van', '#008000',
+            'Meeting', '#008000',
+            'Council Meeting', '#008000',
+            'Planning Meeting', '#008000',
+            '#FF0000' // any other store type
+          ]
+        }
+      });
+      var popup = new mapboxgl.Popup;
+      map.on('mouseenter', 'tilequery-points', function(e) {
+        map.getCanvas().style.cursor = 'pointer';
+        var title = '<h3>' + e.features[0].properties.Event + '</h3>';
+        var eventType = '<h4>' + e.features[0].properties.EVENT_TYPE + '</h4>';
+        var eventTIME = '<h4>' + e.features[0].properties.START_TIME + ' to ' + e.features[0].properties.END_TIME + '</h4>';
+        var eventDesc = '<p>' + e.features[0].properties.Description + '</p>';
+        var storeAddress = '<p>' + e.features[0].properties.Address + '</p>';
+        var obj = JSON.parse(e.features[0].properties.tilequery);
+        var distance = '<p>' + (obj.distance / 1609.344).toFixed(2) + ' mi. from location' + '</p>';
+        var lon = e.features[0].properties.Longitude;
+        var lat = e.features[0].properties.Latitude;
+        var coordinates = new mapboxgl.LngLat(lon, lat);
+        var content = title + eventType + eventTIME + eventDesc;
+        popup.setLngLat(coordinates)
+          .setHTML(content)
+          .addTo(map);
+      })
+      map.on('mouseleave', 'tilequery-points', function() {
+        map.getCanvas().style.cursor = '';
+        popup.remove();
+      });
+    })
   </script>
+
 </body>
+
 </html>
