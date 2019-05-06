@@ -1,1 +1,1 @@
-# (maps)[https://kochandrea.github.io/maps/]
+# [maps](https://kochandrea.github.io/maps/)
