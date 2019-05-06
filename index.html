@@ -36,7 +36,7 @@
     var map = new mapboxgl.Map({
       container: 'map', // The container ID
       style: 'mapbox://styles/mapbox/light-v10', // The map style to use
-      center: [-77.0369, 38.9072], // Starting position [lng, lat]
+      center: [-77.036560, 38.897957], // Starting position [lng, lat]
       zoom: 12 // Starting zoom level
     });
     map.on('load', function() {
@@ -45,7 +45,7 @@
       mapboxgl: mapboxgl, // Set the mapbox-gl instance
       zoom: 13, // Set the zoom level for geocoding results
       placeholder: "HEY! Enter an address or place name", // This placeholder text will display in the search bar
-      bbox: [-105.116, 39.679, -104.898, 39.837] // Set a bounding box
+     // bbox: [-105.116, 39.679, -104.898, 39.837] // Set a bounding box
     });
     // Add the geocoder to the map
     map.addControl(geocoder, 'top-left'); // Add the search box to the top left
