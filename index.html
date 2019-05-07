@@ -56,7 +56,7 @@
         var tileset = 'kochandrea.ce9ezr2u'; // replace this with the ID of the tileset you created
         var radius = 1609; // 1609 meters is roughly equal to one mile
         var limit = 50; // The maximum amount of results to return
-        var query = 'https://api.mapbox.com/v4/' + tileset + '/tilequery/' + point[13] + ',' + point[8] + '.json?radius=' + radius + '&limit= ' + limit + ' &access_token=' + mapboxgl.accessToken;
+        var query = 'https://api.mapbox.com/v4/' + tileset + '/tilequery/' + point[0] + ',' + point[1] + '.json?radius=' + radius + '&limit= ' + limit + ' &access_token=' + mapboxgl.accessToken;
         marker.setLngLat(point).addTo(map); // Add the marker to the map at the result coordinates
       
         $.ajax({
