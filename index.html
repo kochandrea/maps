@@ -97,17 +97,25 @@
           },
           "circle-color": [
             'match',
-            ['get', 'STORE_TYPE'], // Use the result 'STORE_TYPE' property
-            'Convenience Store', '#FF8C00',
-            'Convenience Store With Gas', '#FF8C00',
-            'Pharmacy', '#FF8C00',
-            'Specialty Food Store', '#9ACD32',
-            'Small Grocery Store', '#008000',
-            'Supercenter', '#008000',
-            'Superette', '#008000',
-            'Supermarket', '#008000',
-            'Warehouse Club Store', '#008000',
-            '#FF0000' // any other store type
+            ['get', 'LICENSE_CATEGORY_TEXT'], // Use the result 'STORE_TYPE' property
+            'Housing: Residential', '#66B6FF',
+            'General Business', '#4E4AFF',
+            'Public Health Food Establish', '#FFB6FF',
+            'General Sales', '#4E4AFF',
+            'General Service and Repair', '#4E4AFF',
+            'Inspected Sales and Services', '#4E4AFF',
+            'Public Health Public Accomm', '#FFB6FF',
+            'Entertainment', '#FF4ADA',
+            'Environmental Materials', '#008000',
+            
+            'Employment Services', '#37C239',
+            'Public Health Pharma', '#FFB6FF',
+            'Housing: Transient', '#66B6FF',
+            'Motor Veh Sales Serv Repair, '#C22D39',
+            'Manufacturing', '#C22D39',
+            'Public Health Funeral Est', '#FFB6FF',
+            
+            '#C29136' // any other store type
            ]
         }
       });
