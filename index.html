@@ -97,16 +97,14 @@
           },
           "circle-color": [
             'match',
-            ['get', 'LICENSE_CATEGORY_TEXT'],
-            'Show', '#FF8C00',
-            'Panel Discussion', '#FF8C00',
-            'Health Fair', '#FF8C00',
-            'Recognitions', '#9ACD32',
-            'Training', '#008000',
-            'Care Van', '#008000',
-            'Meeting', '#008000',
-            'Council Meeting', '#008000',
-            'Planning Meeting', '#008000',
+            ['get', 'LICENSESTATUS'],
+            'Active', '#FF8C00',
+            'Cancelled', '#FF8C00',
+            'Closed', '#FF8C00',
+            'Expired', '#9ACD32',
+            'Lapsed', '#008000',
+            'Ready to Batch Print Ready to Renew', '#008000',
+            'Pending', '#008000',
             '#FF0000' // any other store type
           ]
         }
