@@ -96,28 +96,29 @@
           },
           "circle-color": [
             'match',
-            ['get', 'EVENT_TYPE'],
-            'Show', '#FF8C00',
-            'Panel Discussion', '#FF8C00',
-            'Health Fair', '#FF8C00',
-            'Recognitions', '#9ACD32',
-            'Training', '#008000',
-            'Care Van', '#008000',
-            'Meeting', '#008000',
-            'Council Meeting', '#008000',
-            'Planning Meeting', '#008000',
+            ['get', 'STORE_TYPE'], // Use the result 'STORE_TYPE' property
+            'Convenience Store', '#FF8C00',
+            'Convenience Store With Gas', '#FF8C00',
+            'Pharmacy', '#FF8C00',
+            'Specialty Food Store', '#9ACD32',
+            'Small Grocery Store', '#008000',
+            'Supercenter', '#008000',
+            'Superette', '#008000',
+            'Supermarket', '#008000',
+            'Warehouse Club Store', '#008000',
             '#FF0000' // any other store type
-          ]
+           ]
         }
       });
       var popup = new mapboxgl.Popup;
       map.on('mouseenter', 'tilequery-points', function(e) {
         map.getCanvas().style.cursor = 'pointer';
-        var title = '<h3>' + e.features[0].properties.Event + '</h3>';
-        var eventType = '<h4>' + e.features[0].properties.EVENT_TYPE + '</h4>';
-        var eventTIME = '<h4>' + e.features[0].properties.START_TIME + ' to ' + e.features[0].properties.END_TIME + '</h4>';
-        var eventDesc = '<p>' + e.features[0].properties.Description + '</p>';
-        var storeAddress = '<p>' + e.features[0].properties.Address + '</p>';
+        var title = '<h3>' + e.features[0].properties.SITE_ADDRESS + '</h3>';
+        var eventType = '<h4>' + e.features[0].properties.BBL_CITY_STATE_ZIP + '</h4>';
+        var eventTIME = '<h4>' + e.features[0].properties.LICSENSECATEOGRY + ' to ' + e.features[0].properties.END_TIME + '</h4>';
+        var eventDesc = '<p>' + e.features[0].properties.LICENSE_CATEGORY_TEXT + '</p>';
+        var storeAddress = '<p>' + e.features[0].properties.LICENSE_CATEGORY_CODE + '</p>';
+        var storeAddress = '<p>' + e.features[0].properties.LICENSESTATUS + '</p>';
         var obj = JSON.parse(e.features[0].properties.tilequery);
         var distance = '<p>' + (obj.distance / 1609.344).toFixed(2) + ' mi. from location' + '</p>';
         var lon = e.features[0].properties.Longitude;
