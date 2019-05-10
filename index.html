@@ -29,6 +29,7 @@
 <body>
 
   <div id='map'></div>
+  <div class='map-overlay' id='legend'></div>
   <script>
     mapboxgl.accessToken = 'pk.eyJ1Ijoia29jaGFuZHJlYSIsImEiOiJjanZjd2d6OGIwNnVtM3lwNnFjdDJrNWk2In0.oxHyUDbtVMfqQ5BJRrZ6cw'; // set the access token
     var map = new mapboxgl.Map({
@@ -43,7 +44,7 @@
         accessToken: mapboxgl.accessToken, // Set the access token
         mapboxgl: mapboxgl, // Set the mapbox-gl instance
         zoom: 13, // Set the zoom level for geocoding results
-        placeholder: "HEY! Enter an address or place name", // This placeholder text will display in the search bar
+        placeholder: "Search an address or place name", // This placeholder text will display in the search bar
         bbox: [-77.11114394, 38.8136509, -76.91272698, 38.99489423] // Set a bounding box
       });
       
@@ -63,8 +64,8 @@
           method: 'GET',
           url: query,
         }).done(function(data) {
-          console.log(data);
-      map.getSource('tilequery').setData(data);
+          console.log(data); //prints data to console
+          map.getSource('tilequery').setData(data);
         })
       });
       map.addSource('tilequery', {
