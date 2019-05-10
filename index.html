@@ -38,7 +38,7 @@
       center: [-77.036560, 38.897957], // Starting position [lng, lat]
       zoom: 12 // Starting zoom level
     });
-    
+
     map.on('load', function() {
       var geocoder = new MapboxGeocoder({ // Initialize the geocoder
         accessToken: mapboxgl.accessToken, // Set the access token
@@ -47,10 +47,10 @@
         placeholder: "Search an address or place name", // This placeholder text will display in the search bar
         bbox: [-77.11114394, 38.8136509, -76.91272698, 38.99489423] // Set a bounding box
       });
-      
+
     // Add the geocoder to the map
       map.addControl(geocoder, 'top-left'); // Add the search box to the top left
-   
+
       var marker = new mapboxgl.Marker({'color': '#66FFA1'}) // Create a new green marker
       geocoder.on('result', function(data) { // When the geocoder returns a result
         var point = data.result.center; // Capture the result coordinates
@@ -59,7 +59,7 @@
         var limit = 50; // The maximum amount of results to return
         var query = 'https://api.mapbox.com/v4/' + tileset + '/tilequery/' + point[0] + ',' + point[1] + '.json?radius=' + radius + '&limit= ' + limit + ' &access_token=' + mapboxgl.accessToken;
         marker.setLngLat(point).addTo(map); // Add the marker to the map at the result coordinates
-      
+
         $.ajax({
           method: 'GET',
           url: query,
@@ -107,14 +107,12 @@
             'Public Health Public Accomm', '#FFB6FF',
             'Entertainment', '#FF4ADA',
             'Environmental Materials', '#008000',
-            
             'Employment Services', '#37C239',
             'Public Health Pharma', '#FFB6FF',
             'Housing: Transient', '#66B6FF',
             'Motor Veh Sales Serv Repair, '#C22D39',
             'Manufacturing', '#C22D39',
             'Public Health Funeral Est', '#FFB6FF',
-            
             '#C29136' // any other store type
            ]
         }
