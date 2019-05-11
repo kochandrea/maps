@@ -122,7 +122,7 @@
         var lon = e.features[0].properties.LONGITUDE;
         var lat = e.features[0].properties.LATITUDE;
         var coordinates = new mapboxgl.LngLat(lon, lat);
-        var content = title + eventType + eventDesc;
+        var content = title + eventType + eventDesc + storeAddress + distance;
         popup.setLngLat(coordinates)
           .setHTML(content)
           .addTo(map);
